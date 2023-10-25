@@ -9,7 +9,7 @@ provider "aws" {
 }
 
 resource "aws_db_instance" "postgresql_db" {
-  identifier           = "fastfood"
+  identifier           = "fastfood-tf"
   allocated_storage    = 20
   db_name              = "fastfood"
   engine               = "postgres"
