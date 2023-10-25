@@ -1,7 +1,9 @@
 name: Terraform Workflow
 
 on:
-  workflow_dispatch:  # Permite acionar manualmente o workflow no GitHub
+  push:
+    branches:
+      - main
 
 jobs:
   terraform:
@@ -27,13 +29,6 @@ jobs:
 
     - name: Terraform Apply
       run: terraform apply -auto-approve
-      env:
-        TF_VAR_db_username: ${{ secrets.DB_USERNAME }}
-        TF_VAR_db_password: ${{ secrets.DB_PASSWORD }}
-        TF_VAR_subnet_group_name: ${{ secrets.SUBNET_GROUP_NAME }}
-
-    - name: Terraform Destroy  # Adicionando etapa para destruir recursos
-      run: terraform destroy -auto-approve
       env:
         TF_VAR_db_username: ${{ secrets.DB_USERNAME }}
         TF_VAR_db_password: ${{ secrets.DB_PASSWORD }}
